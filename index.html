@@ -1,0 +1,2007 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080810" />
+
+    <title>CogniVerse Agency — Chief of Staff Digital</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Calendly widget (CDN oficial) -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+    <style>
+      :root {
+        --bg: #080810;
+        --surface-a: #0e0e1a;
+        --surface-b: #13131f;
+        --brand: #8b5cf6;
+        --brand-light: #a78bfa;
+        --pink: #d946ef;
+        --cyan: #06b6d4;
+        --text: #f0f0f8;
+        --muted: #7070a0;
+        --border: rgba(255, 255, 255, 0.07);
+        --shadow: 0 20px 60px rgba(139, 92, 246, 0.18);
+
+        --radius-lg: 20px;
+        --radius-md: 16px;
+        --radius-sm: 12px;
+        --nav-h: 72px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      /* Noise/grain overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.07;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.6'/></svg>");
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 18px;
+      }
+
+      .section {
+        position: relative;
+        z-index: 1;
+        padding: 92px 0;
+      }
+
+      .section--tight {
+        padding: 70px 0;
+      }
+
+      .grid-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0) 40%),
+          radial-gradient(800px 400px at 15% 10%, rgba(167, 139, 250, 0.16), transparent 50%),
+          radial-gradient(760px 360px at 80% 20%, rgba(6, 182, 212, 0.12), transparent 50%);
+        pointer-events: none;
+      }
+
+      .grid-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+        background-size: 48px 48px;
+        opacity: 0.12;
+        mask-image: radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+      }
+
+      /* Nav */
+      header.nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--nav-h);
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        transition: background 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
+        background: rgba(8, 8, 16, 0);
+        backdrop-filter: blur(0px);
+      }
+
+      header.nav.nav--scrolled {
+        background: rgba(8, 8, 16, 0.66);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+      }
+
+      .nav__inner {
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 18px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 150px;
+      }
+
+      .brand__name {
+        font-family: "Syne", system-ui, sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        font-size: 18px;
+        background: linear-gradient(135deg, #a78bfa, #06b6d4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav__links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 0 10px;
+      }
+
+      .nav__links a {
+        color: rgba(240, 240, 248, 0.9);
+        font-size: 14px;
+        letter-spacing: 0.2px;
+        padding: 10px 6px;
+        border-radius: 10px;
+        transition: color 0.2s ease, background 0.2s ease;
+      }
+
+      .nav__links a:hover {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 12px 16px;
+        font-weight: 500;
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.02);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .btn:focus-visible,
+      .nav__hamburger:focus-visible,
+      .nav__mobile-panel a:focus-visible,
+      .link-btn:focus-visible {
+        outline: 2px solid rgba(167, 139, 250, 0.65);
+        outline-offset: 3px;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 0 6px rgba(167, 139, 250, 0.12), var(--shadow);
+      }
+
+      .btn--primary {
+        border-color: rgba(255, 255, 255, 0.08);
+        background: linear-gradient(135deg, #8b5cf6, #d946ef);
+        box-shadow: 0 0 36px rgba(217, 70, 239, 0.16);
+      }
+
+      .btn--primary:hover {
+        box-shadow: 0 0 48px rgba(217, 70, 239, 0.25), var(--shadow);
+      }
+
+      .btn--ghost {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .btn--link {
+        border-color: transparent;
+        background: transparent;
+        padding: 8px 10px;
+        border-radius: 12px;
+        color: rgba(240, 240, 248, 0.92);
+      }
+
+      .btn--link:hover {
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: none;
+        transform: translateY(-1px);
+      }
+
+      .link-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.02);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        cursor: pointer;
+      }
+
+      .link-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 36px rgba(139, 92, 246, 0.16);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .nav__cta {
+        display: none;
+      }
+
+      .nav__hamburger {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      }
+
+      .nav__hamburger:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 36px rgba(139, 92, 246, 0.16);
+      }
+
+      .nav__mobile-panel {
+        position: fixed;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        z-index: 60;
+        background: rgba(8, 8, 16, 0.82);
+        backdrop-filter: blur(18px);
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        transform: translateY(-10px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .nav__mobile-panel.is-open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav__mobile-panel__inner {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 14px 18px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav__mobile-panel a {
+        padding: 12px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.02);
+        font-weight: 500;
+      }
+
+      /* Hero */
+      .hero {
+        min-height: 100vh;
+        padding-top: calc(var(--nav-h) + 24px);
+        padding-bottom: 64px;
+        overflow: hidden;
+      }
+
+      #hero-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
+      .hero__overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          radial-gradient(900px 420px at 22% 18%, rgba(139, 92, 246, 0.18), transparent 55%),
+          radial-gradient(850px 400px at 75% 26%, rgba(6, 182, 212, 0.12), transparent 52%),
+          linear-gradient(180deg, rgba(8, 8, 16, 0.1), rgba(8, 8, 16, 0.75) 70%, rgba(8, 8, 16, 0.95));
+      }
+
+      .hero__content {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 26px;
+        align-items: center;
+      }
+
+      .tagline {
+        color: rgba(240, 240, 248, 0.86);
+        letter-spacing: 0.6px;
+        font-weight: 500;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      h1.hero__title {
+        margin: 10px 0 0;
+        font-family: "Syne", system-ui, sans-serif;
+        font-weight: 800;
+        line-height: 1.05;
+        font-size: clamp(34px, 6vw, 60px);
+        letter-spacing: 0.2px;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #a78bfa, #06b6d4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .glow-purple {
+        text-shadow:
+          0 0 24px rgba(167, 139, 250, 0.22),
+          0 0 40px rgba(139, 92, 246, 0.14);
+      }
+
+      .hero__subtitle {
+        margin: 14px 0 0;
+        color: rgba(240, 240, 248, 0.9);
+        font-size: 16px;
+        line-height: 1.55;
+        max-width: 62ch;
+      }
+
+      .hero__ctaRow {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .hero__socialProof {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .proof-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.02);
+        color: rgba(240, 240, 248, 0.95);
+      }
+
+      .proof-item .check {
+        color: rgba(167, 139, 250, 0.95);
+        font-weight: 800;
+        margin-top: 1px;
+        text-shadow: 0 0 20px rgba(167, 139, 250, 0.2);
+      }
+
+      /* Shared section titles */
+      .section__head {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+
+      .kicker {
+        color: rgba(240, 240, 248, 0.86);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+        font-size: 13px;
+      }
+
+      .section__title {
+        margin: 0;
+        font-family: "Syne", system-ui, sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        font-size: clamp(26px, 3.4vw, 40px);
+        line-height: 1.15;
+      }
+
+      .section__sub {
+        margin: 0;
+        color: rgba(240, 240, 248, 0.88);
+        line-height: 1.6;
+        max-width: 72ch;
+        font-size: 15.5px;
+      }
+
+      /* Problem / Solution */
+      .ps-grid {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .panel__inner {
+        padding: 22px;
+      }
+
+      .panel--problem {
+        background:
+          radial-gradient(800px 340px at 10% 10%, rgba(217, 70, 239, 0.08), transparent 50%),
+          linear-gradient(180deg, rgba(217, 70, 239, 0.08), rgba(8, 8, 16, 0) 55%),
+          rgba(255, 255, 255, 0.02);
+      }
+
+      .panel--solution {
+        background:
+          radial-gradient(780px 340px at 20% 10%, rgba(167, 139, 250, 0.14), transparent 50%),
+          radial-gradient(720px 320px at 90% 20%, rgba(6, 182, 212, 0.12), transparent 50%),
+          rgba(255, 255, 255, 0.02);
+      }
+
+      .panel__title {
+        font-family: "Syne", system-ui, sans-serif;
+        font-weight: 800;
+        margin: 0 0 12px;
+        font-size: 22px;
+      }
+
+      .panel__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .panel__list li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        color: rgba(240, 240, 248, 0.92);
+        line-height: 1.45;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        margin-top: 6px;
+        background: linear-gradient(135deg, #a78bfa, #06b6d4);
+        box-shadow: 0 0 30px rgba(167, 139, 250, 0.25);
+        flex: 0 0 auto;
+      }
+
+      /* Services */
+      .services-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .card {
+        position: relative;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(20px);
+        padding: 18px;
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: radial-gradient(800px 280px at 20% 0%, rgba(167, 139, 250, 0.18), transparent 55%);
+        opacity: 0;
+        transition: opacity 0.25s ease;
+        pointer-events: none;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 70px rgba(139, 92, 246, 0.2);
+        border-color: rgba(255, 255, 255, 0.11);
+      }
+
+      .card:hover::after {
+        opacity: 1;
+      }
+
+      .card__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .icon-wrap {
+        width: 44px;
+        height: 44px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-weight: 700;
+        font-size: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(217, 70, 239, 0.12));
+        color: rgba(240, 240, 248, 0.95);
+      }
+
+      .badge--popular {
+        box-shadow: 0 0 40px rgba(217, 70, 239, 0.18);
+      }
+
+      .card__title {
+        margin: 14px 0 0;
+        font-family: "Syne", system-ui, sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        font-size: 20px;
+      }
+
+      .card__highlight {
+        margin-top: 6px;
+        font-weight: 700;
+        color: rgba(240, 240, 248, 0.95);
+        background: linear-gradient(135deg, rgba(167, 139, 250, 0.28), rgba(6, 182, 212, 0.12));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 10px 12px;
+        display: inline-block;
+      }
+
+      .card__desc {
+        margin: 12px 0 0;
+        color: rgba(240, 240, 248, 0.88);
+        line-height: 1.6;
+        font-size: 14.7px;
+      }
+
+      .card__meta {
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 8px;
+      }
+
+      .card__meta li {
+        color: rgba(240, 240, 248, 0.9);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .card__meta li span {
+        color: rgba(167, 139, 250, 0.95);
+        font-weight: 900;
+      }
+
+      .card__actions {
+        margin-top: 16px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .btn--card {
+        padding: 11px 14px;
+      }
+
+      .services__ctaFull {
+        margin-top: 14px;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        background:
+          radial-gradient(900px 380px at 18% 0%, rgba(167, 139, 250, 0.18), transparent 55%),
+          rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px);
+        padding: 18px;
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr;
+      }
+
+      .services__ctaFull h3 {
+        margin: 0;
+        font-family: "Syne", system-ui, sans-serif;
+        font-size: 22px;
+        letter-spacing: 0.2px;
+      }
+
+      .services__ctaFull p {
+        margin: 0;
+        color: rgba(240, 240, 248, 0.88);
+        line-height: 1.6;
+      }
+
+      /* Process */
+      .process {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(14px);
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .step::after {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 160px;
+        height: 160px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, rgba(167, 139, 250, 0.25), rgba(6, 182, 212, 0.06), transparent 70%);
+        opacity: 0.8;
+        pointer-events: none;
+      }
+
+      .step__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .step__num {
+        font-family: "Syne", system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 24px;
+        letter-spacing: 0.3px;
+        background: linear-gradient(135deg, #a78bfa, #06b6d4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .step__title {
+        font-weight: 800;
+        font-size: 16px;
+        letter-spacing: 0.2px;
+      }
+
+      .step__desc {
+        margin: 10px 0 0;
+        color: rgba(240, 240, 248, 0.88);
+        line-height: 1.6;
+        position: relative;
+        z-index: 1;
+        font-size: 14.8px;
+      }
+
+      /* Metrics */
+      .metrics {
+        position: relative;
+      }
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .metric {
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(18px);
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .metric::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: radial-gradient(900px 300px at 30% 0%, rgba(167, 139, 250, 0.16), transparent 55%);
+        opacity: 0.7;
+        pointer-events: none;
+      }
+
+      .metric__value {
+        font-family: "Syne", system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 38px;
+        letter-spacing: 0.2px;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      .metric__label {
+        margin: 10px 0 0;
+        color: rgba(240, 240, 248, 0.88);
+        line-height: 1.5;
+        position: relative;
+        z-index: 1;
+        font-size: 14.8px;
+      }
+
+      /* Calendly section */
+      .schedule {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .schedule-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        align-items: start;
+      }
+
+      .schedule-card {
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(18px);
+        padding: 18px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .schedule-card::after {
+        content: "";
+        position: absolute;
+        top: -80px;
+        left: -80px;
+        width: 220px;
+        height: 220px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.22), rgba(6, 182, 212, 0.08), transparent 70%);
+        opacity: 0.9;
+        pointer-events: none;
+      }
+
+      .schedule-list {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 0;
+        display: grid;
+        gap: 12px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .schedule-list li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        color: rgba(240, 240, 248, 0.92);
+        line-height: 1.5;
+        font-size: 14.8px;
+      }
+
+      .schedule-list .tick {
+        width: 22px;
+        height: 22px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        background: rgba(255, 255, 255, 0.03);
+        color: rgba(167, 139, 250, 0.95);
+        font-weight: 900;
+        box-shadow: 0 0 30px rgba(167, 139, 250, 0.14);
+        flex: 0 0 auto;
+        margin-top: 1px;
+      }
+
+      /* Calendly override */
+      .calendly-inline-widget {
+        background: transparent !important;
+      }
+
+      .calendly-inline-widget iframe {
+        background: transparent !important;
+      }
+
+      /* About / Manifesto */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        align-items: start;
+      }
+
+      .about-copy {
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        background: rgba(255, 255, 255, 0.03);
+        padding: 18px;
+        backdrop-filter: blur(18px);
+      }
+
+      .about-copy p {
+        margin: 12px 0 0;
+        color: rgba(240, 240, 248, 0.88);
+        line-height: 1.7;
+        font-size: 14.9px;
+        white-space: pre-line;
+      }
+
+      .stack-grid {
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        background: rgba(255, 255, 255, 0.03);
+        padding: 18px;
+        backdrop-filter: blur(18px);
+      }
+
+      .stack-grid h3 {
+        margin: 0;
+        font-family: "Syne", system-ui, sans-serif;
+        font-size: 20px;
+        letter-spacing: 0.2px;
+      }
+
+      .stack-items {
+        margin-top: 14px;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .stack-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 12px 12px;
+      }
+
+      .stack-item svg {
+        flex: 0 0 auto;
+      }
+
+      .stack-item span {
+        color: rgba(240, 240, 248, 0.92);
+        font-weight: 600;
+      }
+
+      /* Footer */
+      footer.footer {
+        position: relative;
+        z-index: 1;
+        padding: 52px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .footer__top {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .footer__tagline {
+        color: rgba(240, 240, 248, 0.9);
+        font-weight: 600;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .footer-links a {
+        color: rgba(240, 240, 248, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 10px 12px;
+        border-radius: 14px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .footer-links a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 36px rgba(6, 182, 212, 0.14);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .footer__legal {
+        color: rgba(240, 240, 248, 0.65);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      /* Reveal animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .reveal--in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive */
+      @media (min-width: 768px) {
+        .nav__cta {
+          display: inline-flex;
+        }
+
+        .nav__hamburger {
+          display: none;
+        }
+
+        .nav__mobile-panel {
+          display: none;
+        }
+
+        .hero__content {
+          grid-template-columns: 1.05fr 0.95fr;
+          gap: 28px;
+        }
+
+        .hero__ctaRow {
+          flex-direction: row;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .hero__socialProof {
+          grid-template-columns: 1fr;
+        }
+
+        .ps-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 18px;
+        }
+
+        .services-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .process {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .metrics-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .schedule-grid {
+          grid-template-columns: 0.98fr 1.02fr;
+          gap: 18px;
+        }
+
+        .about-grid {
+          grid-template-columns: 1.12fr 0.88fr;
+          gap: 18px;
+        }
+
+        .stack-items {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1.05fr 0.95fr;
+          align-items: start;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .process {
+          grid-template-columns: repeat(5, 1fr);
+        }
+
+        .process .step {
+          padding: 16px;
+        }
+
+        .metrics-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .services__ctaFull {
+          grid-template-columns: 1fr auto;
+          align-items: center;
+        }
+
+        .hero__socialProof {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Reduce motion */
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          transition: none;
+          transform: none;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="nav" id="top">
+      <div class="nav__inner">
+        <a class="brand" href="#top" aria-label="CogniVerse">
+          <svg
+            width="34"
+            height="34"
+            viewBox="0 0 44 44"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-label="Ícone de rede neural da CogniVerse"
+            focusable="false"
+          >
+            <defs>
+              <linearGradient id="gBrand" x1="8" y1="8" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#A78BFA" />
+                <stop offset="0.55" stop-color="#8B5CF6" />
+                <stop offset="1" stop-color="#06B6D4" />
+              </linearGradient>
+              <linearGradient id="gPink" x1="8" y1="36" x2="36" y2="8" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#D946EF" />
+                <stop offset="1" stop-color="#8B5CF6" />
+              </linearGradient>
+            </defs>
+
+            <circle cx="22" cy="22" r="15" stroke="url(#gBrand)" stroke-width="1.6" opacity="0.95" />
+            <circle cx="22" cy="22" r="3.4" fill="url(#gPink)" opacity="0.95" />
+
+            <g stroke="url(#gBrand)" stroke-width="1.2" opacity="0.9">
+              <path d="M22 7.3 L26.5 14.2" />
+              <path d="M37 16.6 L29.8 20.2" />
+              <path d="M37.4 27.3 L30.1 23.8" />
+              <path d="M22 37.1 L17.6 30.2" />
+              <path d="M7.7 27.2 L14.9 23.7" />
+              <path d="M7.6 16.6 L14.9 20.2" />
+            </g>
+
+            <g fill="url(#gBrand)">
+              <circle cx="22" cy="7.6" r="1.7" />
+              <circle cx="36.4" cy="16.2" r="1.7" />
+              <circle cx="36.4" cy="27.5" r="1.7" />
+              <circle cx="22" cy="36.5" r="1.7" />
+              <circle cx="7.6" cy="27.2" r="1.7" />
+              <circle cx="7.6" cy="16.3" r="1.7" />
+            </g>
+          </svg>
+          <span class="brand__name">CogniVerse</span>
+        </a>
+
+        <nav class="nav__links" aria-label="Navegação principal">
+          <a href="#servicos">Serviços</a>
+          <a href="#processo">Como Funciona</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#agendar">Agendar</a>
+        </nav>
+
+        <button class="btn btn--primary nav__cta" type="button" id="nav-cta" aria-label="Agendar Discovery Call">
+          Agendar Discovery Call
+        </button>
+
+        <button class="nav__hamburger" type="button" id="hamburger" aria-label="Abrir menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de menu">
+            <path d="M4 7H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <path d="M4 12H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <path d="M4 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="nav__mobile-panel" id="mobilePanel" aria-hidden="true">
+      <div class="nav__mobile-panel__inner">
+        <a href="#servicos" class="mobile-link">Serviços</a>
+        <a href="#processo" class="mobile-link">Como Funciona</a>
+        <a href="#sobre" class="mobile-link">Sobre</a>
+        <a href="#agendar" class="mobile-link">Agendar</a>
+        <button class="btn btn--primary" type="button" id="mobile-cta">
+          Agendar Discovery Call
+        </button>
+      </div>
+    </div>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero section" aria-label="Hero">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero__overlay" aria-hidden="true"></div>
+
+        <div class="container hero__content">
+          <div class="hero__copy">
+            <div class="tagline reveal">— Chief of Staff Digital para Founders</div>
+            <h1 class="hero__title reveal">
+              Transforme Visão em<br />
+              <span class="gradient-text glow-purple">Execução Escalável</span>
+            </h1>
+            <p class="hero__subtitle reveal">
+              A CogniVerse é o ecossistema de IA e automação que liberta o seu tempo para o que realmente importa: o crescimento do negócio.
+            </p>
+
+            <div class="hero__ctaRow reveal" role="group" aria-label="Chamadas para ação">
+              <button class="btn btn--primary" type="button" id="hero-cta">
+                Agendar Discovery Call
+              </button>
+              <a class="btn btn--ghost btn--card" href="#processo" aria-label="Ver como funciona">
+                Ver Como Funciona <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+
+            <div class="hero__socialProof reveal" aria-label="Prova social">
+              <div class="proof-item">
+                <div class="check" aria-hidden="true">✓</div>
+                <div>Onboarding em menos de 7 dias</div>
+              </div>
+              <div class="proof-item">
+                <div class="check" aria-hidden="true">✓</div>
+                <div>Metodologia 100% assíncrona</div>
+              </div>
+              <div class="proof-item">
+                <div class="check" aria-hidden="true">✓</div>
+                <div>ROI mensurável em 30-60 dias</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal" aria-hidden="true">
+            <div
+              class="panel panel--solution"
+              style="border-radius: 22px; padding: 0; background: rgba(255,255,255,0.03); backdrop-filter: blur(20px);"
+            >
+              <div class="panel__inner">
+                <div class="kicker">Sinal de prontidão</div>
+                <h3 class="panel__title" style="font-size: 24px; margin-top: 8px;">
+                  Menos reuniões. Mais execução.
+                </h3>
+                <p style="margin: 10px 0 0; color: rgba(240,240,248,0.88); line-height: 1.7; font-size: 14.9px;">
+                  Se o seu crescimento está travando por operações manuais, falta de governança e processos sem clareza, a CogniVerse transforma isso em um sistema autônomo.
+                </p>
+                <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+                  <span class="badge">
+                    <span style="opacity:0.95;">1</span> Discovery objetiva
+                  </span>
+                  <span class="badge">
+                    <span style="opacity:0.95;">2</span> Sprint com KPIs
+                  </span>
+                  <span class="badge badge--popular">
+                    <span style="opacity:0.95;">3</span> Escala com governança
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROBLEMA -> SOLUÇÃO -->
+      <section class="section section--tight" aria-label="Problema e solução">
+        <div class="container">
+          <div class="ps-grid">
+            <div class="panel panel--problem reveal">
+              <div class="panel__inner">
+                <div class="kicker">Problema</div>
+                <h2 class="panel__title">O Dilema do Founder</h2>
+                <ul class="panel__list">
+                  <li>
+                    <span class="dot" aria-hidden="true"></span>
+                    Tempo consumido por operações manuais
+                  </li>
+                  <li>
+                    <span class="dot" aria-hidden="true"></span>
+                    Equipes inchadas sem ganho de escala
+                  </li>
+                  <li>
+                    <span class="dot" aria-hidden="true"></span>
+                    Agências tradicionais vendem horas, não resultados
+                  </li>
+                  <li>
+                    <span class="dot" aria-hidden="true"></span>
+                    Falta de visibilidade e governança clara
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel panel--solution reveal">
+              <div class="panel__inner">
+                <div class="kicker">Solução</div>
+                <h2 class="panel__title">O Jeito CogniVerse</h2>
+                <ul class="panel__list">
+                  <li>
+                    <span class="dot" aria-hidden="true"></span>
+                    Sistemas autônomos que trabalham sem você
+                  </li>
+                  <li>
+                    <span class="dot" aria-hidden="true"></span>
+                    Escala sem contratações massivas
+                  </li>
+                  <li>
+                    <span class="dot" aria-hidden="true"></span>
+                    Entrega por marcos, não por hora
+                  </li>
+                  <li>
+                    <span class="dot" aria-hidden="true"></span>
+                    Governança centralizada e transparente
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVIÇOS -->
+      <section class="section" id="servicos" aria-label="Nossos Serviços">
+        <div class="container">
+          <div class="section__head reveal">
+            <div class="kicker">Nossos Serviços</div>
+            <h2 class="section__title">Escolha o nível de alavancagem que seu negócio precisa</h2>
+            <p class="section__sub">
+              Estruturamos o seu crescimento como um sistema: diagnóstico rápido, execução assíncrona e governança com métricas.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="card reveal" aria-label="Auditoria de IA CogniVerse">
+              <div class="card__top">
+                <div class="icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de lupa para Auditoria de IA">
+                    <path
+                      d="M10 18a8 8 0 1 1 8-8"
+                      stroke="url(#g1)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                    <path d="M10 10h.01" stroke="currentColor" stroke-width="6" stroke-linecap="round" />
+                    <path d="M14.5 14.5L21 21" stroke="url(#g1)" stroke-width="2" stroke-linecap="round" />
+                    <defs>
+                      <linearGradient id="g1" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#A78BFA" />
+                        <stop offset="1" stop-color="#06B6D4" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <span class="badge" style="background: linear-gradient(135deg, rgba(167,139,250,0.16), rgba(6,182,212,0.10));">
+                  48h de diagnóstico
+                </span>
+              </div>
+
+              <h3 class="card__title">Auditoria de IA CogniVerse</h3>
+              <p class="card__desc">
+                Mapeamos todos os gargalos operacionais do seu negócio e entregamos um plano de automação pronto para execução.
+              </p>
+              <ul class="card__meta">
+                <li><span aria-hidden="true">•</span> Diagnóstico completo</li>
+                <li><span aria-hidden="true">•</span> Mapa de automações</li>
+                <li><span aria-hidden="true">•</span> Plano de ação priorizado</li>
+              </ul>
+              <div class="card__actions">
+                <button class="btn btn--ghost btn--card" type="button" onclick="openCalendlyPopup()">
+                  Saiba mais
+                </button>
+              </div>
+            </article>
+
+            <article class="card reveal" aria-label="Sprint de Ecossistema Digital">
+              <div class="card__top">
+                <div class="icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de foguete para Sprint de Ecossistema Digital">
+                    <path d="M14 4c3 1 5 3 6 6-3 1-6 3-8 5-2-2-4-5-5-8 2-1 5-2 7-3Z" stroke="url(#g2)" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M10 14l-4 4" stroke="url(#g2)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M14 10l-4 4" stroke="url(#g2)" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                      <linearGradient id="g2" x1="4" y1="4" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#D946EF"/>
+                        <stop offset="0.55" stop-color="#8B5CF6"/>
+                        <stop offset="1" stop-color="#06B6D4"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <span class="badge badge--popular">
+                  Mais Popular
+                </span>
+              </div>
+
+              <h3 class="card__title">Sprint de Ecossistema Digital</h3>
+              <p class="card__desc">
+                Implementamos sua presença multi-plataforma integrada: desde sistemas de captação até automação de relacionamento com clientes.
+              </p>
+              <div class="card__highlight">30 dias de implementação</div>
+              <ul class="card__meta">
+                <li><span aria-hidden="true">•</span> Setup multi-plataforma</li>
+                <li><span aria-hidden="true">•</span> Automações de captação</li>
+                <li><span aria-hidden="true">•</span> Fluxos de nutrição</li>
+                <li><span aria-hidden="true">•</span> Relatório de resultados</li>
+              </ul>
+              <div class="card__actions">
+                <button class="btn btn--primary btn--card" type="button" onclick="openCalendlyPopup()">
+                  Saiba mais
+                </button>
+              </div>
+            </article>
+
+            <article class="card reveal" aria-label="Centro de Comando Notion">
+              <div class="card__top">
+                <div class="icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de dashboard para Centro de Comando (Notion)">
+                    <path d="M4 6h16v14H4V6Z" stroke="url(#g3)" stroke-width="2" />
+                    <path d="M8 10h3v3H8v-3Z" fill="url(#g3)" opacity="0.9"/>
+                    <path d="M13 12h4" stroke="url(#g3)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M13 15h4" stroke="url(#g3)" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                      <linearGradient id="g3" x1="4" y1="6" x2="20" y2="20" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#A78BFA" />
+                        <stop offset="1" stop-color="#06B6D4" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <span class="badge" style="background: linear-gradient(135deg, rgba(6,182,212,0.12), rgba(167,139,250,0.14));">
+                  Setup em 7 dias
+                </span>
+              </div>
+
+              <h3 class="card__title">Centro de Comando (Notion)</h3>
+              <p class="card__desc">
+                Instalamos e configuramos o CogniVerse Agency Template — seu sistema operacional central para gestão, finanças e estratégia.
+              </p>
+              <ul class="card__meta">
+                <li><span aria-hidden="true">•</span> Template configurado</li>
+                <li><span aria-hidden="true">•</span> Treinamento da equipe</li>
+                <li><span aria-hidden="true">•</span> SOPs documentados</li>
+              </ul>
+              <div class="card__actions">
+                <button class="btn btn--ghost btn--card" type="button" onclick="openCalendlyPopup()">
+                  Saiba mais
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="services__ctaFull reveal" role="region" aria-label="Serviços estratégicos high-touch">
+            <div>
+              <h3>Serviços Estratégicos High-Touch</h3>
+              <p>
+                Para founders que buscam um parceiro de longo prazo. Consultoria e implementação contínua de sistemas de IA e automação, com reportes quinzenais e estratégia dedicada.
+              </p>
+            </div>
+            <button class="btn btn--primary" type="button" onclick="openCalendlyPopup()">
+              Vamos Conversar <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMO FUNCIONA -->
+      <section class="section" id="processo" aria-label="Como Funciona">
+        <div class="container">
+          <div class="section__head reveal">
+            <div class="kicker">Do Discovery à Escala</div>
+            <h2 class="section__title">Um processo assíncrono, orientado a resultados mensuráveis</h2>
+            <p class="section__sub">
+              Você acompanha tudo sem reuniões desnecessárias. Nós conduzimos a execução com transparência e foco nos KPIs.
+            </p>
+          </div>
+
+          <div class="process">
+            <div class="step reveal">
+              <div class="step__head">
+                <div class="step__num">01</div>
+                <div class="step__title">Discovery Call</div>
+              </div>
+              <p class="step__desc">Qualificação técnica e cultural. Entendemos suas dores, objetivos e oportunidades de automação.</p>
+            </div>
+            <div class="step reveal">
+              <div class="step__head">
+                <div class="step__num">02</div>
+                <div class="step__title">Proposta Estratégica</div>
+              </div>
+              <p class="step__desc">Definimos objetivos, KPIs e cronograma. Transparência total sobre o que será entregue.</p>
+            </div>
+            <div class="step reveal">
+              <div class="step__head">
+                <div class="step__num">03</div>
+                <div class="step__title">Onboarding</div>
+              </div>
+              <p class="step__desc">Configuração de acessos, alinhamento e setup do ambiente em menos de 7 dias.</p>
+            </div>
+            <div class="step reveal">
+              <div class="step__head">
+                <div class="step__num">04</div>
+                <div class="step__title">Ciclos de Execução</div>
+              </div>
+              <p class="step__desc">Sprints de 2 semanas com reportes quinzenais. Você acompanha tudo, sem reuniões desnecessárias.</p>
+            </div>
+            <div class="step reveal">
+              <div class="step__head">
+                <div class="step__num">05</div>
+                <div class="step__title">Post-mortem &amp; Escala</div>
+              </div>
+              <p class="step__desc">Análise de resultados, ajuste de estratégia e preparação para o próximo ciclo de crescimento.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESULTADOS -->
+      <section class="section metrics" id="resultados" aria-label="Métricas e Resultados">
+        <div class="grid-bg" aria-hidden="true"></div>
+        <div class="container">
+          <div class="section__head reveal">
+            <div class="kicker">Métricas / Resultados</div>
+            <h2 class="section__title">Foco em impacto, não em esforço</h2>
+            <p class="section__sub">
+              Metas claras para guiar a execução. Contamos com dashboards e reportes para manter governança e previsibilidade.
+            </p>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric reveal">
+              <p class="metric__value counter" data-target="80" data-suffix="%" data-decimals="0">0%</p>
+              <div class="metric__label">80%+ de margem de lucro (meta Fase 3)</div>
+            </div>
+            <div class="metric reveal">
+              <p class="metric__value counter" data-target="48" data-suffix="h" data-decimals="0">0h</p>
+              <div class="metric__label">48h de onboarding (meta Fase 2)</div>
+            </div>
+            <div class="metric reveal">
+              <p class="metric__value counter" data-target="50" data-suffix="%+" data-decimals="0">0%+</p>
+              <div class="metric__label">50%+ de receita passiva (meta Fase 3)</div>
+            </div>
+            <div class="metric reveal">
+              <p class="metric__value counter" data-target="9.5" data-suffix="" data-decimals="1">0</p>
+              <div class="metric__label">9.5 NPS médio (meta Fase 3)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AGENDAMENTO -->
+      <section class="section schedule" id="agendar" aria-label="Agendamento via Calendly">
+        <div class="container">
+          <div class="section__head reveal">
+            <div class="kicker">Agendamentos</div>
+            <h2 class="section__title">Pronto para Escalar?</h2>
+            <p class="section__sub">Agende uma Discovery Call de 30 minutos. Sem compromisso. Sem pitch agressivo. Só conversa estratégica.</p>
+          </div>
+
+          <div class="schedule-grid">
+            <div class="schedule-card reveal">
+              <h3 class="panel__title" style="font-size: 22px; margin: 0;">O que acontece na call</h3>
+              <ul class="schedule-list">
+                <li>
+                  <span class="tick" aria-hidden="true">✓</span>
+                  Diagnóstico rápido do seu maior gargalo operacional
+                </li>
+                <li>
+                  <span class="tick" aria-hidden="true">✓</span>
+                  Apresentação de 2-3 alavancas imediatas para o seu negócio
+                </li>
+                <li>
+                  <span class="tick" aria-hidden="true">✓</span>
+                  Clareza sobre se a CogniVerse é o fit certo para você
+                </li>
+              </ul>
+              <div class="card__actions" style="margin-top: 16px; position: relative; z-index: 1;">
+                <button class="btn btn--primary" type="button" onclick="openCalendlyPopup()">
+                  Agendar Agora
+                </button>
+                <a class="btn btn--ghost" href="#servicos" aria-label="Ver serviços">
+                  Ver Serviços
+                </a>
+              </div>
+            </div>
+
+            <div class="reveal">
+              <div
+                class="calendly-inline-widget"
+                data-url="https://calendly.com/cogniverse-ai"
+                style="min-width: 320px; height: 700px;"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE -->
+      <section class="section" id="sobre" aria-label="Sobre / Manifesto">
+        <div class="container">
+          <div class="section__head reveal">
+            <div class="kicker">Por Que Construímos a CogniVerse</div>
+            <h2 class="section__title">Pensamos como founders. Executamos como sistemas.</h2>
+            <p class="section__sub">
+              Nossa missão é transformar visão em execução através de sistemas autônomos e processos escaláveis.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-copy reveal">
+              <p>
+                Vimos founders brilhantes presos no operacional — reunião atrás de reunião, time crescendo sem ganho de escala, ferramentas que deveriam ajudar mas viraram mais uma coisa para gerenciar.
+                
+                A CogniVerse nasceu para ser diferente. Acreditamos que a IA não é um add-on — é o core. Que escala não é sobre fazer mais, é sobre fazer o que importa com as alavancas certas. E que o tempo do founder é o recurso mais precioso de qualquer empresa.
+              </p>
+            </div>
+
+            <div class="stack-grid reveal">
+              <h3>Stack Tecnológica</h3>
+              <ul class="stack-items" aria-label="Tecnologias usadas">
+                <li class="stack-item">
+                  <!-- Notion (custom icon) -->
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" role="img" aria-label="Notion (Gestão/OS)">
+                    <path d="M6 5h12v14H6V5Z" stroke="url(#s1)" stroke-width="2" />
+                    <path d="M9 9l3 6 3-6" stroke="url(#s1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <defs>
+                      <linearGradient id="s1" x1="6" y1="5" x2="18" y2="19" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#A78BFA" />
+                        <stop offset="1" stop-color="#06B6D4" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>Notion (Gestão/OS)</span>
+                </li>
+                <li class="stack-item">
+                  <!-- Make / Zapier -->
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" role="img" aria-label="Make / Zapier (Automação)">
+                    <path d="M7 12a5 5 0 0 1 10 0" stroke="url(#s2)" stroke-width="2" stroke-linecap="round" />
+                    <path d="M12 7v10" stroke="url(#s2)" stroke-width="2" stroke-linecap="round" />
+                    <defs>
+                      <linearGradient id="s2" x1="7" y1="7" x2="17" y2="17" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#D946EF" />
+                        <stop offset="1" stop-color="#8B5CF6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>Make / Zapier (Automação)</span>
+                </li>
+                <li class="stack-item">
+                  <!-- Calendly -->
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" role="img" aria-label="Calendly (Agendamento)">
+                    <path d="M7 3v4M17 3v4" stroke="url(#s3)" stroke-width="2" stroke-linecap="round" />
+                    <path d="M5 8h14v13H5V8Z" stroke="url(#s3)" stroke-width="2" />
+                    <path d="M8 12h3v3H8v-3Z" fill="url(#s3)" opacity="0.9" />
+                    <defs>
+                      <linearGradient id="s3" x1="5" y1="8" x2="19" y2="21" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#A78BFA" />
+                        <stop offset="1" stop-color="#06B6D4" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>Calendly (Agendamento)</span>
+                </li>
+                <li class="stack-item">
+                  <!-- OpenAI / IA -->
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" role="img" aria-label="OpenAI / IA (Inteligência)">
+                    <path d="M12 3l3 6-3 2-3-2 3-6Z" stroke="url(#s4)" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M6 13c1.5 5 10.5 5 12 0" stroke="url(#s4)" stroke-width="2" stroke-linecap="round" />
+                    <path d="M8.5 16.5l-2 4" stroke="url(#s4)" stroke-width="2" stroke-linecap="round" />
+                    <path d="M15.5 16.5l2 4" stroke="url(#s4)" stroke-width="2" stroke-linecap="round" />
+                    <defs>
+                      <linearGradient id="s4" x1="7" y1="3" x2="18" y2="20" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#06B6D4" />
+                        <stop offset="1" stop-color="#8B5CF6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>OpenAI / IA (Inteligência)</span>
+                </li>
+                <li class="stack-item">
+                  <!-- Slack -->
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" role="img" aria-label="Slack (Comunicação)">
+                    <path d="M10 14a2 2 0 1 1-4 0c0-1.1.9-2 2-2h2v2Z" fill="url(#s5)" opacity="0.95"/>
+                    <path d="M14 10a2 2 0 1 1 0-4c1.1 0 2 .9 2 2v2h-2Z" fill="url(#s5)" opacity="0.95"/>
+                    <path d="M14 14h-4v-4h4v4Z" stroke="url(#s5)" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M10 10h4v4h-4v-4Z" fill="url(#s5)" opacity="0.25"/>
+                    <defs>
+                      <linearGradient id="s5" x1="8" y1="8" x2="18" y2="18" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#D946EF" />
+                        <stop offset="1" stop-color="#06B6D4" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span>Slack (Comunicação)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer" aria-label="Rodapé">
+        <div class="container footer-grid">
+          <div class="footer__top">
+            <div class="brand" style="min-width: auto;">
+              <svg
+                width="34"
+                height="34"
+                viewBox="0 0 44 44"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Ícone de rede neural da CogniVerse"
+                focusable="false"
+              >
+                <defs>
+                  <linearGradient id="fg1" x1="8" y1="8" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#A78BFA" />
+                    <stop offset="0.55" stop-color="#8B5CF6" />
+                    <stop offset="1" stop-color="#06B6D4" />
+                  </linearGradient>
+                  <linearGradient id="fg2" x1="8" y1="36" x2="36" y2="8" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#D946EF" />
+                    <stop offset="1" stop-color="#8B5CF6" />
+                  </linearGradient>
+                </defs>
+
+                <circle cx="22" cy="22" r="15" stroke="url(#fg1)" stroke-width="1.6" opacity="0.95" />
+                <circle cx="22" cy="22" r="3.4" fill="url(#fg2)" opacity="0.95" />
+              </svg>
+              <span class="brand__name" style="font-size: 18px;">CogniVerse</span>
+            </div>
+            <div class="footer__tagline">Connected Minds, Smart Decisions</div>
+            <div class="footer__legal">© 2026 CogniVerse Agency. Todos os direitos reservados.</div>
+          </div>
+
+          <div style="display: grid; gap: 14px;">
+            <div class="footer-links" aria-label="Links do rodapé">
+              <a href="#servicos">Serviços</a>
+              <a href="#processo">Processo</a>
+              <a href="#sobre">Sobre</a>
+              <a href="#privacidade" id="privacyLink">Privacidade</a>
+            </div>
+            <button class="btn btn--primary" type="button" onclick="openCalendlyPopup()">
+              Agendar Discovery Call
+            </button>
+            <div class="footer__legal" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" style="display:inline-flex; align-items:center; gap:10px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone do LinkedIn">
+                  <path d="M6 9H3v12h3V9Z" fill="rgba(240,240,248,0.9)"/>
+                  <path d="M4.5 3.8A1.8 1.8 0 1 0 4.5 7.4a1.8 1.8 0 0 0 0-3.6Z" fill="rgba(240,240,248,0.9)"/>
+                  <path d="M10 9H7v12h3v-6.5c0-1.7.7-2.6 2-2.6 1.2 0 1.8.8 1.8 2.6V21h3v-7.2C16.8 10.3 15 9 12.7 9c-1.1 0-2.1.5-2.7 1.3V9Z" fill="rgba(240,240,248,0.9)"/>
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- PRIVACIDADE (simples, placeholder) -->
+      <section class="section section--tight" id="privacidade" aria-label="Privacidade">
+        <div class="container">
+          <div class="about-copy reveal">
+            <h2 class="section__title" style="font-size: 28px; margin: 0 0 10px;">Privacidade</h2>
+            <p style="margin: 0; color: rgba(240,240,248,0.86); line-height: 1.7; font-size: 14.9px;">
+              Este site usa o widget oficial do Calendly para agendamento. Ao agendar, você pode fornecer informações ao Calendly e/ou à CogniVerse conforme a política do provedor. Para dúvidas adicionais, entre em contato com a nossa equipe.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function openCalendlyPopup() {
+        try {
+          if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+            window.Calendly.initPopupWidget({ url: "https://calendly.com/cogniverse-ai" });
+            return;
+          }
+        } catch (e) {}
+        // Fallback: scroll to widget if script is not ready yet.
+        const el = document.getElementById("agendar");
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      // Nav CTA bindings
+      const navCta = document.getElementById("nav-cta");
+      const heroCta = document.getElementById("hero-cta");
+      const mobileCta = document.getElementById("mobile-cta");
+      if (navCta) navCta.addEventListener("click", openCalendlyPopup);
+      if (heroCta) heroCta.addEventListener("click", openCalendlyPopup);
+      if (mobileCta) mobileCta.addEventListener("click", openCalendlyPopup);
+
+      // Mobile menu
+      const hamburger = document.getElementById("hamburger");
+      const mobilePanel = document.getElementById("mobilePanel");
+      function setMobileOpen(isOpen) {
+        if (!mobilePanel) return;
+        mobilePanel.classList.toggle("is-open", isOpen);
+        mobilePanel.setAttribute("aria-hidden", String(!isOpen));
+      }
+      if (hamburger && mobilePanel) {
+        hamburger.addEventListener("click", () => {
+          const isOpen = mobilePanel.classList.contains("is-open");
+          setMobileOpen(!isOpen);
+        });
+
+        mobilePanel.addEventListener("click", (e) => {
+          const t = e.target;
+          if (t && t.classList && t.classList.contains("mobile-link")) setMobileOpen(false);
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") setMobileOpen(false);
+        });
+      }
+
+      // Nav blur on scroll
+      const navEl = document.querySelector("header.nav");
+      function onScrollNav() {
+        if (!navEl) return;
+        navEl.classList.toggle("nav--scrolled", window.scrollY > 12);
+      }
+      window.addEventListener("scroll", onScrollNav, { passive: true });
+      onScrollNav();
+
+      // Reveal animations
+      const revealEls = document.querySelectorAll(".reveal");
+      if (!prefersReducedMotion && revealEls.length) {
+        const obs = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("reveal--in");
+                obs.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.14 }
+        );
+        revealEls.forEach((el) => obs.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add("reveal--in"));
+      }
+
+      // Counter animation
+      function animateCounter(el, target, suffix, decimals) {
+        const start = 0;
+        const durationMs = 900;
+        const startTime = performance.now();
+
+        function fmt(val) {
+          if (decimals === 0) return Math.round(val) + suffix;
+          return val.toFixed(decimals) + suffix;
+        }
+
+        function tick(now) {
+          const t = Math.min(1, (now - startTime) / durationMs);
+          const eased = 1 - Math.pow(1 - t, 3);
+          const current = start + (target - start) * eased;
+          el.textContent = fmt(current);
+          if (t < 1) requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      const counterEls = document.querySelectorAll(".counter");
+      if (!prefersReducedMotion && counterEls.length) {
+        const cObs = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              const el = entry.target;
+              if (el.dataset.started === "true") continue;
+              el.dataset.started = "true";
+
+              const target = parseFloat(el.getAttribute("data-target") || "0");
+              const suffix = el.getAttribute("data-suffix") || "";
+              const decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+              animateCounter(el, target, suffix, decimals);
+              cObs.unobserve(el);
+            }
+          },
+          { threshold: 0.35 }
+        );
+
+        counterEls.forEach((el) => cObs.observe(el));
+      }
+
+      // Hero Canvas: network graph
+      const canvas = document.getElementById("hero-canvas");
+      if (canvas && !prefersReducedMotion) {
+        const ctx = canvas.getContext("2d");
+
+        let w = 0;
+        let h = 0;
+        let dpr = 1;
+
+        const points = [];
+        const LINK_DIST = 120; // px (logical)
+        const COUNT = 90;
+
+        function rand(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+
+        function resize() {
+          dpr = Math.max(1, Math.min(2.25, window.devicePixelRatio || 1));
+          w = Math.floor(canvas.clientWidth);
+          h = Math.floor(canvas.clientHeight);
+          canvas.width = Math.floor(w * dpr);
+          canvas.height = Math.floor(h * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          points.length = 0;
+          const pad = 40;
+          for (let i = 0; i < COUNT; i++) {
+            points.push({
+              x: rand(pad, w - pad),
+              y: rand(pad, h - pad),
+              vx: rand(-0.18, 0.18),
+              vy: rand(-0.18, 0.18),
+              r: rand(1.0, 2.2),
+              huePick: Math.random() > 0.5 ? "purple" : "cyan",
+            });
+          }
+        }
+
+        window.addEventListener("resize", resize, { passive: true });
+        resize();
+
+        let last = performance.now();
+        function frame(now) {
+          const dt = now - last;
+          last = now;
+
+          ctx.clearRect(0, 0, w, h);
+
+          // Subtle fade to keep trails minimal
+          ctx.globalCompositeOperation = "source-over";
+
+          for (let i = 0; i < points.length; i++) {
+            const p = points[i];
+            // Slow drift; scale with dt to keep consistent across FPS.
+            p.x += p.vx * (dt / 16.67);
+            p.y += p.vy * (dt / 16.67);
+
+            // Wrap boundaries
+            if (p.x < -20) p.x = w + 20;
+            if (p.x > w + 20) p.x = -20;
+            if (p.y < -20) p.y = h + 20;
+            if (p.y > h + 20) p.y = -20;
+          }
+
+          // Draw connections
+          for (let i = 0; i < points.length; i++) {
+            const a = points[i];
+            for (let j = i + 1; j < points.length; j++) {
+              const b = points[j];
+              const dx = a.x - b.x;
+              const dy = a.y - b.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist > LINK_DIST) continue;
+
+              const t = 1 - dist / LINK_DIST; // 0..1
+              const alpha = 0.18 * t * t;
+
+              const sameHue = a.huePick === b.huePick;
+              const color = sameHue
+                ? a.huePick === "purple"
+                  ? `rgba(167, 139, 250, ${alpha})`
+                  : `rgba(6, 182, 212, ${alpha})`
+                : `rgba(139, 92, 246, ${alpha * 0.85})`;
+
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.strokeStyle = color;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+
+          // Draw points
+          for (let i = 0; i < points.length; i++) {
+            const p = points[i];
+            const c =
+              p.huePick === "purple" ? "rgba(167, 139, 250, 0.55)" : "rgba(6, 182, 212, 0.45)";
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = c;
+            ctx.fill();
+          }
+
+          requestAnimationFrame(frame);
+        }
+
+        requestAnimationFrame(frame);
+      }
+    </script>
+  </body>
+</html>
+
