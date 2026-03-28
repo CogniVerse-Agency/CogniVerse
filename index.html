@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CogniVerse Agency — Connected Minds, Smart Decisions</title>
+  <meta name="description" content="CogniVerse Agency: Chief of Staff Digital para founders que querem escalar com IA, automação e execução mensurável." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+  <style>
+    :root {
+      --bg: #080810;
+      --surface: #0e0e1a;
+      --surface-2: #13131f;
+      --purple: #8b5cf6;
+      --purple-light: #a78bfa;
+      --magenta: #d946ef;
+      --cyan: #06b6d4;
+      --text: #f0f0f8;
+      --muted: #7070a0;
+      --border: rgba(255, 255, 255, 0.07);
+      --radius: 16px;
+      --shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.11), transparent 35%),
+        radial-gradient(circle at 80% 0%, rgba(6, 182, 212, 0.09), transparent 25%),
+        repeating-radial-gradient(circle at 0 0, transparent 0 2px, rgba(255,255,255,0.01) 3px 4px);
+      mix-blend-mode: screen;
+      z-index: -1;
+    }
+
+    .container { width: min(1120px, 92vw); margin: 0 auto; }
+    .section { padding: 88px 0; }
+
+    h1,h2,h3,h4 {
+      margin: 0 0 14px;
+      font-family: "Syne", sans-serif;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    p { margin: 0 0 14px; color: var(--muted); }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 2.6vw, 2.7rem);
+      margin-bottom: 12px;
+    }
+
+    .section-title.gradient-text { display: inline-block; }
+    .section-subtitle { max-width: 700px; }
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 99;
+      transition: background .25s ease, backdrop-filter .25s ease, border-color .25s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav.scrolled {
+      background: rgba(8, 8, 16, 0.65);
+      backdrop-filter: blur(14px);
+      border-color: var(--border);
+    }
+
+    .nav-inner {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      font-family: "Syne", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.2rem;
+    }
+
+    .brand svg { width: 32px; height: 32px; }
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: .95rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--cyan); }
+
+    .btn {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 11px 18px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .btn:hover, .btn:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: rgba(167, 139, 250, 0.6);
+      outline: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--purple), var(--magenta));
+      border: none;
+      color: #fff;
+    }
+
+    .mobile-toggle {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: transparent;
+      color: var(--text);
+      width: 44px;
+      height: 44px;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+      padding: 0 4vw 18px;
+      background: rgba(8,8,16,.96);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-menu a { color: var(--text); text-decoration: none; }
+    .mobile-menu.open { display: flex; }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      overflow: hidden;
+    }
+
+    #hero-network {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.65;
+    }
+
+    .hero-content { max-width: 760px; }
+    .tagline {
+      color: var(--purple-light);
+      letter-spacing: .08em;
+      font-size: .84rem;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 { font-size: clamp(2rem, 6vw, 4.6rem); margin-bottom: 22px; }
+    .hero h1 .gradient-text { text-shadow: 0 0 28px rgba(139,92,246,.3); }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .social-proof {
+      margin-top: 28px;
+      display: grid;
+      gap: 8px;
+      color: var(--text);
+      font-size: .95rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: rgba(167, 139, 250, 0.5);
+    }
+
+    .grid-2, .services-grid, .metrics-grid, .stack-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .problem { background: linear-gradient(145deg, rgba(217,70,79,.14), rgba(16,8,14,.65)); }
+    .solution { background: linear-gradient(145deg, rgba(139,92,246,.18), rgba(6,182,212,.12)); }
+
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+    }
+
+    ul.clean li {
+      margin-bottom: 10px;
+      padding-left: 22px;
+      position: relative;
+      color: #d9d9ec;
+    }
+
+    ul.clean li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+    }
+
+    .services-grid .card.popular {
+      border-color: rgba(217,70,239,.55);
+      box-shadow: 0 0 45px rgba(217,70,239,.18);
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--purple), var(--magenta));
+      color: #fff;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      margin-bottom: 14px;
+    }
+
+    .service-meta {
+      color: var(--purple-light);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: inline-grid;
+      place-items: center;
+      background: rgba(139,92,246,.18);
+      margin-bottom: 10px;
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 28px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 14px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(var(--purple), var(--cyan));
+      opacity: .4;
+    }
+
+    .step {
+      margin-left: 36px;
+      position: relative;
+    }
+
+    .step::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, var(--purple), var(--cyan));
+      box-shadow: 0 0 18px rgba(139,92,246,.5);
+    }
+
+    .metrics {
+      background: linear-gradient(120deg, rgba(14,14,26,.95), rgba(19,19,31,.9));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .metric-value {
+      font-family: "Syne", sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .metric-label { color: #c9c9de; font-size: .95rem; }
+
+    .scheduling-wrap { display: grid; gap: 24px; align-items: center; }
+
+    .calendly-inline-widget { background: transparent !important; border-radius: var(--radius); }
+
+    .stack-item {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #dbdbef;
+      font-size: .94rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      padding: 42px 0;
+      border-top: 1px solid var(--border);
+      background: #080811;
+    }
+
+    .footer-grid { display: grid; gap: 20px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 14px; }
+    .footer-links a { color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+
+    :focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .metrics-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .scheduling-wrap { grid-template-columns: 1fr 1.1fr; }
+      .footer-grid { grid-template-columns: 1.4fr 1fr auto; align-items: center; }
+    }
+
+    @media (min-width: 1024px) {
+      .nav-links { display: flex; }
+      .mobile-toggle, .mobile-menu { display: none !important; }
+      .services-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .metrics-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+      .stack-grid { grid-template-columns: repeat(5, minmax(0,1fr)); }
+      .timeline { grid-template-columns: repeat(5, minmax(0,1fr)); }
+      .timeline::before {
+        left: 0;
+        right: 0;
+        top: 24px;
+        width: auto;
+        height: 2px;
+        bottom: auto;
+      }
+      .step { margin-left: 0; margin-top: 28px; }
+      .step::before { left: 2px; top: -18px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Navegação principal">
+      <div class="container nav-inner">
+        <a href="#top" class="brand" aria-label="CogniVerse Home">
+          <svg viewBox="0 0 64 64" role="img" aria-label="Ícone de rede neural">
+            <circle cx="32" cy="32" r="30" fill="none" stroke="url(#g1)" stroke-width="2" />
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0%" stop-color="#8b5cf6" />
+                <stop offset="100%" stop-color="#d946ef" />
+              </linearGradient>
+            </defs>
+            <circle cx="18" cy="24" r="4" fill="#a78bfa" />
+            <circle cx="32" cy="16" r="4" fill="#d946ef" />
+            <circle cx="46" cy="26" r="4" fill="#06b6d4" />
+            <circle cx="22" cy="42" r="4" fill="#8b5cf6" />
+            <circle cx="40" cy="44" r="4" fill="#a78bfa" />
+            <line x1="18" y1="24" x2="32" y2="16" stroke="#8b5cf6" stroke-width="2" />
+            <line x1="32" y1="16" x2="46" y2="26" stroke="#d946ef" stroke-width="2" />
+            <line x1="18" y1="24" x2="22" y2="42" stroke="#06b6d4" stroke-width="2" />
+            <line x1="22" y1="42" x2="40" y2="44" stroke="#8b5cf6" stroke-width="2" />
+            <line x1="46" y1="26" x2="40" y2="44" stroke="#06b6d4" stroke-width="2" />
+          </svg>
+          <span class="gradient-text">CogniVerse</span>
+        </a>
+
+        <div class="nav-links" id="desktopNav">
+          <a href="#servicos">Serviços</a>
+          <a href="#processo">Como Funciona</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#agendar">Agendar</a>
+          <a class="btn btn-primary" href="#agendar">Agendar Discovery Call</a>
+        </div>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menu">
+          ☰
+        </button>
+      </div>
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Como Funciona</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#agendar">Agendar</a>
+        <a class="btn btn-primary" href="#agendar">Agendar Discovery Call</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <canvas id="hero-network" aria-label="Rede neural animada decorativa"></canvas>
+      <div class="container hero-content">
+        <div class="tagline reveal">— Chief of Staff Digital para Founders</div>
+        <h1 class="reveal">Transforme Visão em<br /><span class="gradient-text">Execução Escalável</span></h1>
+        <p class="reveal">A CogniVerse é o ecossistema de IA e automação que liberta o seu tempo para o que realmente importa: o crescimento do negócio.</p>
+        <div class="hero-actions reveal">
+          <button class="btn btn-primary" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/SEU_USUARIO_AQUI'}); return false;">Agendar Discovery Call</button>
+          <a class="btn" href="#processo">Ver Como Funciona ↓</a>
+        </div>
+        <div class="social-proof reveal" aria-label="Prova social">
+          <span>✓ Onboarding em menos de 7 dias</span>
+          <span>✓ Metodologia 100% assíncrona</span>
+          <span>✓ ROI mensurável em 30-60 dias</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problema-solucao">
+      <div class="container grid-2">
+        <article class="card problem reveal">
+          <h2>O Dilema do Founder</h2>
+          <ul class="clean">
+            <li>Tempo consumido por operações manuais</li>
+            <li>Equipes inchadas sem ganho de escala</li>
+            <li>Agências tradicionais vendem horas, não resultados</li>
+            <li>Falta de visibilidade e governança clara</li>
+          </ul>
+        </article>
+
+        <article class="card solution reveal">
+          <h2>O Jeito CogniVerse</h2>
+          <ul class="clean">
+            <li>Sistemas autônomos que trabalham sem você</li>
+            <li>Escala sem contratações massivas</li>
+            <li>Entrega por marcos, não por hora</li>
+            <li>Governança centralizada e transparente</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="servicos">
+      <div class="container">
+        <h2 class="section-title gradient-text reveal">Nossos Serviços</h2>
+        <p class="section-subtitle reveal">Escolha o nível de alavancagem que seu negócio precisa</p>
+
+        <div class="services-grid" style="margin-top: 24px;">
+          <article class="card reveal">
+            <div class="icon-wrap" aria-label="Ícone de auditoria">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="#a78bfa" stroke-width="2"/><path d="M15 15l6 6" stroke="#06b6d4" stroke-width="2"/></svg>
+            </div>
+            <h3>Auditoria de IA CogniVerse</h3>
+            <p class="service-meta">48h de diagnóstico</p>
+            <p>Mapeamos todos os gargalos operacionais do seu negócio e entregamos um plano de automação pronto para execução.</p>
+            <p><strong>Inclui:</strong> Diagnóstico completo | Mapa de automações | Plano de ação priorizado</p>
+            <a class="btn" href="#agendar">Saiba mais</a>
+          </article>
+
+          <article class="card popular reveal">
+            <span class="badge">Mais Popular</span>
+            <div class="icon-wrap" aria-label="Ícone de sprint">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 14h6l3-4h5l-2 4h2l-3 6-2-3H8z" stroke="#d946ef" stroke-width="2" fill="none"/></svg>
+            </div>
+            <h3>Sprint de Ecossistema Digital</h3>
+            <p class="service-meta">30 dias de implementação</p>
+            <p>Implementamos sua presença multi-plataforma integrada: desde sistemas de captação até automação de relacionamento com clientes.</p>
+            <p><strong>Inclui:</strong> Setup multi-plataforma | Automações de captação | Fluxos de nutrição | Relatório de resultados</p>
+            <a class="btn" href="#agendar">Saiba mais</a>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon-wrap" aria-label="Ícone de dashboard">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#06b6d4" stroke-width="2"/><path d="M7 14h2M11 10h2M15 7h2" stroke="#a78bfa" stroke-width="2"/></svg>
+            </div>
+            <h3>Centro de Comando (Notion)</h3>
+            <p class="service-meta">Setup em 7 dias</p>
+            <p>Instalamos e configuramos o CogniVerse Agency Template — seu sistema operacional central para gestão, finanças e estratégia.</p>
+            <p><strong>Inclui:</strong> Template configurado | Treinamento da equipe | SOPs documentados</p>
+            <a class="btn" href="#agendar">Saiba mais</a>
+          </article>
+        </div>
+
+        <article class="card reveal" style="margin-top: 18px;">
+          <h3>Serviços Estratégicos High-Touch</h3>
+          <p>Para founders que buscam um parceiro de longo prazo. Consultoria e implementação contínua de sistemas de IA e automação, com reportes quinzenais e estratégia dedicada.</p>
+          <a class="btn btn-primary" href="#agendar">Vamos Conversar →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="processo">
+      <div class="container">
+        <h2 class="section-title gradient-text reveal">Do Discovery à Escala</h2>
+        <p class="section-subtitle reveal">Um processo assíncrono, orientado a resultados mensuráveis</p>
+
+        <div class="timeline">
+          <article class="step card reveal"><h3>1. Discovery Call</h3><p>Qualificação técnica e cultural. Entendemos suas dores, objetivos e oportunidades de automação.</p></article>
+          <article class="step card reveal"><h3>2. Proposta Estratégica</h3><p>Definimos objetivos, KPIs e cronograma. Transparência total sobre o que será entregue.</p></article>
+          <article class="step card reveal"><h3>3. Onboarding</h3><p>Configuração de acessos, alinhamento e setup do ambiente em menos de 7 dias.</p></article>
+          <article class="step card reveal"><h3>4. Ciclos de Execução</h3><p>Sprints de 2 semanas com reportes quinzenais. Você acompanha tudo, sem reuniões desnecessárias.</p></article>
+          <article class="step card reveal"><h3>5. Post-mortem & Escala</h3><p>Análise de resultados, ajuste de estratégia e preparação para o próximo ciclo de crescimento.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section metrics" id="metricas">
+      <div class="container">
+        <h2 class="section-title gradient-text reveal">Resultados que Guiam Decisões</h2>
+        <div class="metrics-grid" style="margin-top: 22px;">
+          <article class="card reveal"><div class="metric-value" data-target="80" data-suffix="%+">0</div><div class="metric-label">de margem de lucro (meta Fase 3)</div></article>
+          <article class="card reveal"><div class="metric-value" data-target="48" data-suffix="h">0</div><div class="metric-label">de onboarding (meta Fase 2)</div></article>
+          <article class="card reveal"><div class="metric-value" data-target="50" data-suffix="%+">0</div><div class="metric-label">de receita passiva (meta Fase 3)</div></article>
+          <article class="card reveal"><div class="metric-value" data-target="9.5" data-suffix="">0</div><div class="metric-label">NPS médio (meta Fase 3)</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="agendar">
+      <div class="container">
+        <h2 class="section-title gradient-text reveal">Pronto para Escalar?</h2>
+        <p class="section-subtitle reveal">Agende uma Discovery Call de 30 minutos. Sem compromisso. Sem pitch agressivo. Só conversa estratégica.</p>
+        <p class="reveal" style="color:#a78bfa;font-size:.9rem;">⚠️ Substitua <strong>SEU_USUARIO_AQUI</strong> pela URL real do Calendly da CogniVerse para ativar o agendamento.</p>
+
+        <div class="scheduling-wrap" style="margin-top: 20px;">
+          <article class="card reveal">
+            <h3>O que acontece na call</h3>
+            <ul class="clean">
+              <li>Diagnóstico rápido do seu maior gargalo operacional</li>
+              <li>Apresentação de 2-3 alavancas imediatas para o seu negócio</li>
+              <li>Clareza sobre se a CogniVerse é o fit certo para você</li>
+            </ul>
+            <button class="btn btn-primary" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/SEU_USUARIO_AQUI'}); return false;">Agendar Agora</button>
+          </article>
+
+          <div class="card reveal">
+            <div class="calendly-inline-widget" data-url="https://calendly.com/SEU_USUARIO_AQUI" style="min-width:320px;height:700px;" aria-label="Widget do Calendly"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container">
+        <h2 class="section-title gradient-text reveal">Por Que Construímos a CogniVerse</h2>
+        <article class="card reveal" style="margin-top: 12px;">
+          <p>Vimos founders brilhantes presos no operacional — reunião atrás de reunião, time crescendo sem ganho de escala, ferramentas que deveriam ajudar mas viraram mais uma coisa para gerenciar.</p>
+          <p>A CogniVerse nasceu para ser diferente. Acreditamos que a IA não é um add-on — é o core. Que escala não é sobre fazer mais, é sobre fazer o que importa com as alavancas certas. E que o tempo do founder é o recurso mais precioso de qualquer empresa.</p>
+        </article>
+
+        <div class="stack-grid" style="margin-top: 18px;">
+          <div class="stack-item reveal" aria-label="Notion"><span>◻</span><span>Notion (Gestão/OS)</span></div>
+          <div class="stack-item reveal" aria-label="Make e Zapier"><span>⚙</span><span>Make / Zapier (Automação)</span></div>
+          <div class="stack-item reveal" aria-label="Calendly"><span>🗓</span><span>Calendly (Agendamento)</span></div>
+          <div class="stack-item reveal" aria-label="OpenAI"><span>✦</span><span>OpenAI / IA (Inteligência)</span></div>
+          <div class="stack-item reveal" aria-label="Slack"><span>💬</span><span>Slack (Comunicação)</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.2rem;" class="gradient-text">CogniVerse</div>
+        <small style="color:var(--muted);">Connected Minds, Smart Decisions</small>
+      </div>
+      <div class="footer-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Processo</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#">Privacidade</a>
+      </div>
+      <div>
+        <a href="#agendar" class="btn btn-primary">Agendar Discovery Call</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="btn" style="margin-top:10px;">LinkedIn</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top:20px; color: var(--muted); font-size:.9rem;">© 2026 CogniVerse Agency. Todos os direitos reservados.</div>
+  </footer>
+
+  <script>
+    const nav = document.querySelector('.nav');
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function handleNavScroll() {
+      nav.classList.toggle('scrolled', window.scrollY > 24);
+    }
+    window.addEventListener('scroll', handleNavScroll);
+    handleNavScroll();
+
+    mobileToggle?.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      mobileToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    mobileMenu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealElements.forEach((el) => revealObserver.observe(el));
+
+    const counters = document.querySelectorAll('.metric-value');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseFloat(el.dataset.target || '0');
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const start = performance.now();
+
+        function animate(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const value = target * (1 - Math.pow(1 - progress, 3));
+          el.textContent = target % 1 ? value.toFixed(1) + suffix : Math.floor(value) + suffix;
+          if (progress < 1) requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.45 });
+    counters.forEach((c) => counterObserver.observe(c));
+
+    const canvas = document.getElementById('hero-network');
+    const ctx = canvas.getContext('2d');
+    let points = [];
+    const pointCount = 80;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = Math.max(window.innerHeight, 680);
+    }
+
+    function initPoints() {
+      points = Array.from({ length: pointCount }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        color: Math.random() > 0.5 ? '139,92,246' : '6,182,212'
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < points.length; i++) {
+        const p = points[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.9, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color},0.45)`;
+        ctx.fill();
+
+        for (let j = i + 1; j < points.length; j++) {
+          const q = points[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 120) {
+            const alpha = (1 - dist / 120) * 0.25;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(167,139,250,${alpha})`;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    resizeCanvas();
+    initPoints();
+    draw();
+    window.addEventListener('resize', () => { resizeCanvas(); initPoints(); });
+  </script>
+</body>
+</html>
