@@ -1,27 +1,55 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg-primary:    #0C0C0A;
+  --color-bg-surface:    #141412;
+  --color-bg-surface2:   #1C1C19;
+  --color-accent:        #C8FF3E;
+  --color-accent-dim:    #9FC832;
+  --color-accent-muted:  rgba(200, 255, 62, 0.08);
+  --color-accent-border: rgba(200, 255, 62, 0.20);
+  --color-text-primary:  #F9F8F4;
+  --color-text-secondary:#A09F98;
+  --color-text-tertiary: #5C5C58;
+  --color-border:        rgba(255, 255, 255, 0.07);
+  --color-border-hover:  rgba(255, 255, 255, 0.15);
+  --font-heading: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --radius-card: 14px;
+  --radius-pill: 9999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Background radial decoration - igual ao site atual */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(200,255,62,0.08), transparent 35%),
+    radial-gradient(circle at 80% 0%,  rgba(200,255,62,0.04), transparent 25%);
+  mix-blend-mode: screen;
+  z-index: -1;
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
