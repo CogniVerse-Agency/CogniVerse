@@ -5,26 +5,28 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 const syne = Syne({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   weight: ['500', '600', '700', '800'],
   variable: '--font-syne',
   display: 'swap',
+  preload: true,
 })
 
 const dmSans = DM_Sans({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   weight: ['300', '400', '500'],
   variable: '--font-dm-sans',
   display: 'swap',
+  preload: true,
 })
 
 export const metadata: Metadata = {
-  title: 'CogniVerse Agency - Connected Minds, Smart Decisions',
+  title: 'CogniVerse Agency — Connected Minds, Smart Decisions',
   description:
-    'CogniVerse Agency: Chief of Staff Digital para founders que querem escalar com IA, automacao e execucao mensuravel.',
+    'CogniVerse Agency: Chief of Staff Digital para founders que querem escalar com IA, automação e execução mensurável.',
   openGraph: {
     title: 'CogniVerse Agency',
-    description: 'Chief of Staff Digital para founders em tracao.',
+    description: 'Chief of Staff Digital para founders em tração.',
     url: 'https://cogniverse-agency.vercel.app',
     siteName: 'CogniVerse Agency',
     locale: 'pt_BR',

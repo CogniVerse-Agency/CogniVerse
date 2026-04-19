@@ -8,22 +8,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        black:    '#0C0C0A',
-        surface:  '#141412',
+        black: '#0C0C0A',
+        surface: '#141412',
         surface2: '#1C1C19',
-        accent:   '#C8FF3E',
-        'accent-dim':    '#9FC832',
-        'accent-muted':  'rgba(200,255,62,0.08)',
+        accent: '#C8FF3E',
+        'accent-dim': '#9FC832',
+        'accent-muted': 'rgba(200,255,62,0.08)',
         'accent-border': 'rgba(200,255,62,0.20)',
-        'text-primary':   '#F9F8F4',
+        'text-primary': '#F9F8F4',
         'text-secondary': '#A09F98',
-        'text-tertiary':  '#5C5C58',
-        border:         'rgba(255,255,255,0.07)',
+        'text-tertiary': '#5C5C58',
+        border: 'rgba(255,255,255,0.07)',
         'border-hover': 'rgba(255,255,255,0.15)',
       },
       fontFamily: {
-        heading: ['Syne', 'sans-serif'],
-        body:    ['DM Sans', 'sans-serif'],
+        heading: ['var(--font-syne)', 'sans-serif'],
+        body: ['var(--font-dm-sans)', 'sans-serif'],
       },
       borderRadius: {
         card: '14px',
