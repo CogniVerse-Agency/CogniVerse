@@ -1,7 +1,7 @@
 ﻿import Link from 'next/link'
 
 const links = [
-  { href: '/#servicos', label: 'Servicos' },
+  { href: '/#servicos', label: 'Serviços' },
   { href: '/servicos/mapeamento-icp', label: 'Mapeamento de ICP' },
   { href: '/#processo', label: 'Como Funciona' },
   { href: '/#sobre', label: 'Sobre' },
@@ -15,7 +15,7 @@ export default function Footer() {
         <div>
           <p className="font-heading text-2xl font-bold text-accent">CogniVerse</p>
           <p className="mt-3 max-w-xs text-sm text-text-secondary">
-            Connected Minds, Smart Decisions. Chief of Staff Digital para founders em tracao.
+            Connected Minds, Smart Decisions. Chief of Staff Digital para founders em tração.
           </p>
         </div>
 

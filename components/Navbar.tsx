@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Menu, X, ChevronDown } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { services } from '@/lib/services'
 import Button from '@/components/ui/Button'
 
@@ -34,7 +34,8 @@ function openCalendlyPopup() {
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+  const servicesRef = useRef<HTMLDivElement>(null)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export default function Navbar() {
     const onEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setMobileOpen(false)
-        setDropdownOpen(false)
+        setServicesOpen(false)
       }
     }
 
@@ -105,34 +106,43 @@ export default function Navbar() {
           <span className="font-heading text-xl font-bold text-accent">CogniVerse</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm text-text-secondary lg:flex" aria-label="Navegacao principal">
+        <nav className="hidden items-center gap-6 text-sm text-text-secondary lg:flex" aria-label="Navegação principal">
           <div
+            ref={servicesRef}
             className="relative"
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
+            onMouseEnter={() => setServicesOpen(true)}
+            onMouseLeave={() => setServicesOpen(false)}
           >
             <button
               type="button"
-              onClick={() => setDropdownOpen((v) => !v)}
               className="flex items-center gap-1 transition-colors hover:text-text-primary"
+              aria-expanded={servicesOpen}
+              aria-haspopup="true"
             >
-              Servicos <ChevronDown size={14} />
+              Serviços
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`}
+                aria-hidden="true"
+              />
             </button>
-            {dropdownOpen && (
-              <div className="absolute left-0 top-8 w-72 rounded-card border border-border bg-surface p-2 shadow-2xl">
+
+            {servicesOpen && (
+              <div className="absolute left-0 top-full z-50 mt-1 min-w-[220px] rounded-card border border-border bg-surface p-2 shadow-lg">
                 {services.map((service) => (
                   <Link
                     key={service.slug}
                     href={`/servicos/${service.slug}`}
-                    className="block rounded-xl px-3 py-2 transition-colors hover:bg-surface2"
+                    className="block rounded-xl px-3 py-2 text-sm text-text-secondary transition-colors hover:bg-surface2 hover:text-text-primary"
+                    onClick={() => setServicesOpen(false)}
                   >
-                    <p className="text-sm font-medium text-text-primary">{service.name}</p>
-                    <p className="text-xs text-text-secondary">{service.meta}</p>
+                    {service.name}
                   </Link>
                 ))}
               </div>
             )}
           </div>
+
           <Link href="/servicos/mapeamento-icp" className="transition-colors hover:text-text-primary">
             Mapeamento de ICP
           </Link>
@@ -165,9 +175,9 @@ export default function Navbar() {
 
       {mobileOpen && (
         <div className="border-t border-border bg-surface lg:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4" aria-label="Navegacao mobile">
+          <nav className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-4" aria-label="Navegação mobile">
             <Link href="/#servicos" onClick={() => setMobileOpen(false)} className="text-text-secondary">
-              Servicos
+              Serviços
             </Link>
             <Link
               href="/servicos/mapeamento-icp"

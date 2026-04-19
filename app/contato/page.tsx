@@ -69,12 +69,12 @@ export default function ContactPage() {
 
     if (from === 1) {
       if (!form.q1.trim()) nextErrors.q1 = 'Por favor, preencha este campo.'
-      if (!form.q2) nextErrors.q2 = 'Selecione uma opcao.'
+      if (!form.q2) nextErrors.q2 = 'Selecione uma opção.'
     }
 
     if (from === 2) {
       if (!form.q3.trim()) nextErrors.q3 = 'Por favor, preencha este campo.'
-      if (form.q4.length === 0) nextErrors.q4 = 'Selecione pelo menos uma opcao.'
+      if (form.q4.length === 0) nextErrors.q4 = 'Selecione pelo menos uma opção.'
     }
 
     if (from === 3) {
@@ -90,7 +90,7 @@ export default function ContactPage() {
     }
 
     if (from === 6) {
-      if (!form.q11) nextErrors.q11 = 'Selecione uma opcao.'
+      if (!form.q11) nextErrors.q11 = 'Selecione uma opção.'
       if (!form.contactName.trim()) nextErrors.contactName = 'Preencha seu nome.'
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.contactEmail.trim())) {
         nextErrors.contactEmail = 'Insira um e-mail valido.'
@@ -145,7 +145,7 @@ export default function ContactPage() {
 
       setStage('success')
     } catch {
-      setErrors({ submit: 'Nao foi possivel enviar agora. Tente novamente em alguns minutos.' })
+      setErrors({ submit: 'Não foi possivel enviar agora. Tente novamente em alguns minutos.' })
     } finally {
       setLoading(false)
     }
@@ -176,7 +176,7 @@ export default function ContactPage() {
               </h1>
               <p className="mt-4 text-text-secondary">
                 Este formulario e o primeiro passo do seu Mapeamento de ICP. Suas respostas orientam toda a
-                pesquisa e definem a qualidade dos leads que voce vai receber.
+                pesquisa e definem a qualidade dos leads que você vai receber.
               </p>
               <div className="mt-6 grid gap-2 text-sm text-text-secondary md:grid-cols-2">
                 <p>10-15 minutos para preencher</p>
@@ -199,7 +199,7 @@ export default function ContactPage() {
               <div>
                 <h2 className="font-heading text-3xl"><span className="text-accent">01.</span> Contexto do Negocio</h2>
                 <p className="mt-2 text-sm text-text-secondary">
-                  Queremos entender o que voce vende antes de olhar para quem compra.
+                  Queremos entender o que você vende antes de olhar para quem compra.
                 </p>
               </div>
               <div>
@@ -208,16 +208,16 @@ export default function ContactPage() {
                   value={form.q1}
                   onChange={(e) => setForm((prev) => ({ ...prev, q1: e.target.value }))}
                   className="min-h-28 w-full rounded-xl border border-border bg-surface2 p-3 text-sm"
-                  placeholder="Descreva em 1-2 frases o problema que voce resolve e para quem."
+                  placeholder="Descreva em 1-2 frases o problema que você resolve e para quem."
                 />
                 {errors.q1 && <p className="mt-1 text-xs text-red-300">{errors.q1}</p>}
               </div>
               <div>
-                <label className="mb-2 block text-sm">Q2 Em qual estagio esta sua startup?</label>
+                <label className="mb-2 block text-sm">Q2 Em qual estagio está sua startup?</label>
                 <div className="space-y-2">
                   {[
                     ['pre-revenue', 'Pre-receita - MVP ou desenvolvimento'],
-                    ['early-traction', 'Tracao inicial - ate R$30k MRR'],
+                    ['early-traction', 'Tração inicial - até R$30k MRR'],
                     ['growing', 'Crescimento - entre R$30k e R$150k MRR'],
                     ['scaling', 'Escala - acima de R$150k MRR'],
                   ].map(([value, label]) => (
@@ -263,7 +263,7 @@ export default function ContactPage() {
                 {errors.q3 && <p className="mt-1 text-xs text-red-300">{errors.q3}</p>}
               </div>
               <div>
-                <label className="mb-2 block text-sm">Q4 Qual o porte das empresas que voce quer atingir?</label>
+                <label className="mb-2 block text-sm">Q4 Qual o porte das empresas que você quer atingir?</label>
                 <div className="grid gap-2 md:grid-cols-2">
                   {[
                     ['micro', 'Micro (1-10 funcionarios)'],
@@ -344,7 +344,7 @@ export default function ContactPage() {
             <section className="space-y-6">
               <h2 className="font-heading text-3xl"><span className="text-accent">04.</span> Dores e Gatilhos de Compra</h2>
               <div>
-                <label className="mb-2 block text-sm">Q7 Qual o principal problema que voce resolve?</label>
+                <label className="mb-2 block text-sm">Q7 Qual o principal problema que você resolve?</label>
                 <textarea
                   value={form.q7}
                   onChange={(e) => setForm((prev) => ({ ...prev, q7: e.target.value }))}
@@ -403,7 +403,7 @@ export default function ContactPage() {
                     ['ecommerce', 'E-commerce / Varejo'],
                     ['logistica', 'Logistica / Supply Chain'],
                     ['hr', 'RH / People Tech'],
-                    ['agencias', 'Agencias / Servicos'],
+                    ['agencias', 'Agencias / Serviços'],
                     ['industria', 'Industria / Manufatura'],
                     ['outro-setor', 'Outro setor'],
                   ].map(([value, label]) => (
@@ -419,7 +419,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <div>
-                <label className="mb-2 block text-sm">Q10 Quais perfis nao vale a pena abordar?</label>
+                <label className="mb-2 block text-sm">Q10 Quais perfis não vale a pena abordar?</label>
                 <textarea
                   value={form.q10}
                   onChange={(e) => setForm((prev) => ({ ...prev, q10: e.target.value }))}
@@ -436,7 +436,7 @@ export default function ContactPage() {
 
           {stage === 6 && (
             <section className="space-y-6">
-              <h2 className="font-heading text-3xl"><span className="text-accent">06.</span> Objetivo com Esta Lista</h2>
+              <h2 className="font-heading text-3xl"><span className="text-accent">06.</span> Objetivo com esta lista</h2>
               <div>
                 <label className="mb-2 block text-sm">Q11 Qual o principal objetivo com esta lista de leads?</label>
                 <div className="space-y-2">
@@ -527,13 +527,13 @@ export default function ContactPage() {
                 Formulario <span className="text-accent">recebido.</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-text-secondary">
-                Suas respostas chegaram para a equipe da CogniVerse. Vamos analisar e entrar em contato em ate 24h.
+                Suas respostas chegaram para a equipe da CogniVerse. Vamos analisar e entrar em contato em até 24h.
               </p>
               <div className="mx-auto mt-7 max-w-2xl space-y-3 rounded-card border border-border bg-surface2 p-5 text-left text-sm text-text-secondary">
                 <p>01. Revisamos suas respostas e preparamos a call de descoberta (45 min).</p>
-                <p>02. Voce recebe um convite de calendario com a data confirmada.</p>
-                <p>03. A pesquisa comeca apos a call, com entrega em ate 10 dias uteis.</p>
-                <p>04. Voce recebe Documento de ICP, Lista de Leads e Loom de Handoff.</p>
+                <p>02. Você recebe um convite de calendario com a data confirmada.</p>
+                <p>03. A pesquisa comeca apos a call, com entrega em até 10 dias úteis.</p>
+                <p>04. Você recebe Documento de ICP, Lista de Leads e Loom de Handoff.</p>
               </div>
             </section>
           )}
@@ -542,3 +542,6 @@ export default function ContactPage() {
     </div>
   )
 }
+
+
+

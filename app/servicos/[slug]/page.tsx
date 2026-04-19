@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const service = getService(params.slug)
   if (!service) {
     return {
-      title: 'Servico nao encontrado - CogniVerse Agency',
-      description: 'A pagina solicitada nao foi encontrada.',
+      title: 'Servico não encontrado - CogniVerse Agency',
+      description: 'A pagina solicitada não foi encontrada.',
     }
   }
 
@@ -42,7 +42,7 @@ export default function ServicePage({ params }: PageProps) {
           </Link>{' '}
           &gt;{' '}
           <Link href="/#servicos" className="hover:text-text-primary">
-            Servicos
+            Serviços
           </Link>{' '}
           &gt; <span className="text-text-primary">{service.name}</span>
         </nav>
@@ -119,7 +119,7 @@ export default function ServicePage({ params }: PageProps) {
           <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
             {[
               'Mapeamento de ICP + Lista Qualificada',
-              'Auditoria de IA - Diagnostico Operacional',
+              'Auditoria de IA - Diagnóstico Operacional',
               'Sprint de Ecossistema Digital - 30 dias',
               'Sequencia de Outreach Automatizada',
             ].map((stage, idx) => {
@@ -138,7 +138,7 @@ export default function ServicePage({ params }: PageProps) {
                   <p className="text-xs text-text-tertiary">0{idx + 1}</p>
                   <p className="mt-2 font-heading text-xl">{stage}</p>
                   <p className={`mt-2 text-xs ${current ? 'text-accent' : 'text-text-secondary'}`}>
-                    {current ? 'Voce esta aqui' : 'Proxima fase da jornada'}
+                    {current ? 'Você está aqui' : 'Proxima fase da jornada'}
                   </p>
                 </article>
               )
@@ -162,7 +162,7 @@ export default function ServicePage({ params }: PageProps) {
         </section>
 
         <section className="mt-10">
-          <h2 className="font-heading text-3xl">Servicos Relacionados</h2>
+          <h2 className="font-heading text-3xl">Serviços Relacionados</h2>
           <div className="mt-5 grid gap-3 md:grid-cols-2">
             {relatedServices.map((item) => (
               <article key={item.slug} className="rounded-card border border-border bg-surface p-5">
@@ -183,3 +183,5 @@ export default function ServicePage({ params }: PageProps) {
     </div>
   )
 }
+
+
