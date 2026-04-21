@@ -5,19 +5,17 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 const syne = Syne({
-  subsets: ['latin', 'latin-ext'],
+  subsets: ['latin'],
   weight: ['500', '600', '700', '800'],
-  variable: '--font-syne',
+  variable: '--font-heading',
   display: 'swap',
-  preload: true,
 })
 
 const dmSans = DM_Sans({
-  subsets: ['latin', 'latin-ext'],
+  subsets: ['latin'],
   weight: ['300', '400', '500'],
-  variable: '--font-dm-sans',
+  variable: '--font-body',
   display: 'swap',
-  preload: true,
 })
 
 export const metadata: Metadata = {
