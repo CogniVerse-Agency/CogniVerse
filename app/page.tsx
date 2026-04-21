@@ -1,7 +1,7 @@
 ﻿'use client'
 
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import HeroCanvas from '@/components/HeroCanvas'
 import ServiceCarousel from '@/components/ServiceCarousel'
 import Button from '@/components/ui/Button'
@@ -14,15 +14,6 @@ declare global {
       initPopupWidget: (args: { url: string }) => void
     }
   }
-}
-
-function loadCalendlyScript() {
-  if (document.querySelector('script[data-calendly="true"]')) return
-  const script = document.createElement('script')
-  script.src = 'https://assets.calendly.com/assets/external/widget.js'
-  script.async = true
-  script.dataset.calendly = 'true'
-  document.body.appendChild(script)
 }
 
 function openCalendlyPopup() {
@@ -75,12 +66,6 @@ function MetricCounter({ target, suffix, decimals = 0 }: MetricCounterProps) {
 
 export default function Home() {
   const revealRef = useReveal<HTMLDivElement>()
-  const [calendlyReady, setCalendlyReady] = useState(false)
-
-  useEffect(() => {
-    loadCalendlyScript()
-    setCalendlyReady(true)
-  }, [])
 
   return (
     <div ref={revealRef} className="pt-20">
@@ -221,13 +206,12 @@ export default function Home() {
             </div>
           </article>
 
-          <div className="reveal overflow-hidden rounded-card border border-border bg-surface2">
-            {calendlyReady && (
-              <div
-                className="calendly-inline-widget min-h-[540px] w-full"
-                data-url="https://calendly.com/cogniverse-ai"
-              />
-            )}
+          <div className="reveal rounded-card border border-border bg-surface2">
+            <div
+              className="calendly-inline-widget w-full"
+              data-url="https://calendly.com/cogniverse-ai/discovery?hide_gdpr_banner=1&background_color=141412&text_color=F9F8F4&primary_color=C8FF3E"
+              style={{ minWidth: '320px', height: '700px' }}
+            />
           </div>
         </div>
       </section>
